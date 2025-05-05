@@ -1,0 +1,20 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template for food items</title>
+</head>
+<body>
+    <h1>Your Favourite Food Items are here </h1>
+</body>
+</html> {% endcomment %}
+
+{% for item  in item_list %}
+    {% comment %} {{ item.id}}  -- {{ item.item_name }} -- {{item.item_desc}} {% endcomment %}
+
+    <ul>
+       {% comment %} <a href="/food/{{item.id}}"><li>{{ item.id}}  -- {{ item.item_name }} </li></a>  {% endcomment %}
+       <a href="{% url "food:detail" item.id %}"><li>{{ item.id}}  -- {{ item.item_name }} </li></a> 
+    </ul>
+{% endfor %}

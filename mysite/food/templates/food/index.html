@@ -1,4 +1,39 @@
-{% comment %} <!DOCTYPE html>
+ {% extends "food/base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% comment %} <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {% endcomment %}
+    <title>Food app</title>
+   
+
+</head>
+<body>
+
+    {% block body %}
+    {% for item in item_list %}
+    <div class="row">
+        <div class="col-md-3 offset-md-2  ">
+            <img class="card m-4px" height="100px"  width="100px" src="{{ item.item_image }}" alt=""/>
+
+        </div>
+        <div class="col-md-4">
+            <h2>{{ item.item_name }}</h2>
+            <h2>{{ item.item_desc }}</h2>
+            <h4>${{ item.item_price }}</h4>
+           
+        </div>
+        <div class="col-md-2">
+            <a href="{% url "food:detail" item.id %}" class="btn btn-success">Details</a>
+        </div>
+    </div>
+    
+    
+    {% endfor %}
+{% endblock %}
+
+
+    {% comment %} <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,11 +45,16 @@
 </body>
 </html> {% endcomment %}
 
-{% for item  in item_list %}
-    {% comment %} {{ item.id}}  -- {{ item.item_name }} -- {{item.item_desc}} {% endcomment %}
 
-    <ul>
-       {% comment %} <a href="/food/{{item.id}}"><li>{{ item.id}}  -- {{ item.item_name }} </li></a>  {% endcomment %}
-       <a href="{% url "food:detail" item.id %}"><li>{{ item.id}}  -- {{ item.item_name }} </li></a> 
-    </ul>
-{% endfor %}
+{% comment %} 
+{% for item  in item_list %}
+{% comment %} {{ item.id}}  -- {{ item.item_name }} -- {{item.item_desc}} {% endcomment %}
+
+{% comment %} <ul> {% endcomment %}
+   {% comment %} <a href="/food/{{item.id}}"><li>{{ item.id}}  -- {{ item.item_name }} </li></a>  {% endcomment %}
+   {% comment %} <a href="{% url "food:detail" item.id %}"><li>{{ item.id}}  -- {{ item.item_name }} </li></a>  {% endcomment %}
+{% comment %} </ul> {% endcomment %}
+
+
+</body>
+</html>
